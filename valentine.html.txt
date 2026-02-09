@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine ❤️</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #ff4e8a, #ff9ecb);
+    color: white;
+    padding-top: 120px;
+    overflow: hidden;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.25s;
+}
+
+#yesBtn { background: #00c853; }
+#noBtn  { background: #d50000; position: absolute; }
+
+.hidden {
+    display: none;
+}
+
+#page2 {
+    position: relative;
+    height: 60vh;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <h2>MS Nidhishree BJ</h2>
+    <button onclick="goToPage2()">Open Message 💌</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="hidden">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yesBtn" onclick="yesClicked()">YES 😍</button>
+    <button id="noBtn">NO 😢</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="hidden">
+    <h1>Yayyyy!! 🎉</h1>
+    <h2>When can we go on a date? 🌹</h2>
+    <input type="date" style="padding:10px; font-size:18px;">
+</div>
+
+<script>
+
+function goToPage2() {
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+    moveNoButton();
+}
+
+function yesClicked() {
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+}
+
+// Auto-escaping NO button
+const noBtn = document.getElementById("noBtn");
+
+function moveNoButton() {
+    const page = document.getElementById("page2");
+    const maxX = page.clientWidth - 120;
+    const maxY = page.clientHeight - 60;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+</script>
+
+</body>
+</html>
